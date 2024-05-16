@@ -61,4 +61,9 @@ class TestBurger:
         mock_ingredient.get_name.return_value = ingredient_name
         mock_ingredient.get_price.return_value = ingredient_price
 
-        assert ingredient_name in burger.get_receipt()
+        receipt = f'(==== {bun_name} ====)\n' \
+                           f'= sauce {ingredient_name} =\n' \
+                           f'(==== {bun_name} ====)\n' \
+                           f'\nPrice: {bun_price * 2 + ingredient_price}'
+
+        assert burger.get_receipt() == receipt
